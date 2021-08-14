@@ -1,6 +1,13 @@
+<% unless user_signed_in? %>
 <div class="border rounded-3 p-3" style="background-color:lightblue;">
-  <a href="#">会員登録</a>してギターフレーズを投稿しませんか？
+  <%= link_to "会員登録", new_user_registration_path %>してギターフレーズを投稿しませんか？ =>もしくは<%= link_to "ログイン", new_user_session_path %>
 </div>
+<% end %>
+
+<% if user_signed_in? %>
+<%= current_user.email %>
+<% end %>
+
 <p class="title mt-3 mb-3">人気のフレーズ</p>
 フレーズ・・・
 <%= link_to "もっと見る", root_path, class: "d-flex justify-content-end" %>
@@ -12,3 +19,18 @@
 <p class="title mt-3 mb-3">人気のユーザー</p>
 ユーザー・・・
 <%= link_to "もっと見る", root_path, class: "d-flex justify-content-end" %>
+
+<p class="title mt-3 mb-3">人気のユーザー</p>
+
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>
+<p class="title mt-3 mb-3">人気のユーザー</p>

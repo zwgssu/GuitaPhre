@@ -12,6 +12,12 @@
   </head>
 
   <body class="mozi" style="background-color:whitesmoke;">
+  <% if notice %>
+  <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+  <p class="alert"><%= alert %></p>
+  <% end %>
     <%= render "layouts/header" %>
     <div class="container" style="width:1050px;">
     <%= yield %>
