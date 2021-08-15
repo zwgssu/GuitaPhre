@@ -35,6 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :uid
       t.string :username
       t.string :introduction
+      t.boolean :password_manually_updated
 
 
       t.timestamps null: false

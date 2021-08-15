@@ -49,6 +49,6 @@ gem "devise"
 gem 'omniauth-google-oauth2'
 gem "omniauth-twitter"
 gem 'omniauth-rails_csrf_protection'
-gem "kaminari"
+gem "kaminari", :git => 'https://github.com/kaminari/kaminari'
 gem 'devise-i18n'
 gem 'devise-i18n-views'

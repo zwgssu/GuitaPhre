@@ -4,10 +4,6 @@
 </div>
 <% end %>
 
-<% if user_signed_in? %>
-<%= current_user.email %>
-<% end %>
-
 <p class="title mt-3 mb-3">人気のフレーズ</p>
 フレーズ・・・
 <%= link_to "もっと見る", root_path, class: "d-flex justify-content-end" %>

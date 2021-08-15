@@ -37,3 +37,7 @@
 .g-logo:hover{
   background:url('google2.png');
 }
+
+.pagination {
+  justify-content: center;
+}
