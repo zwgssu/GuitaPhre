@@ -1,2 +1,36 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% @page_title = @user.username + "のユーザーページ" %>
+
+<div class="row mb-3">
+  <div class="col-sm-3">
+    <%= cheak_use_picture(@user) %>
+  </div>
+  <div class="col-sm-9">
+    <h2><%= @user.username %><br></h2>
+    <%= simple_format(@user.introduction) %>
+  </div>
+  <div class="d-flex justify-content-end">ここにファボボタン</div>
+</div>
+
+<div class="tabs">
+  <input id="all" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="all">フレーズ</label>
+  <input id="programming" type="radio" name="tab_item">
+  <label class="tab_item" for="programming">テーマ</label>
+  <input id="design" type="radio" name="tab_item">
+  <label class="tab_item" for="design">Fav</label>
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">aaaa<br>aaaa<br>eeeee<br>aaaa<br>eeeee</p>
+    </div>
+  </div>
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">プログラミングの内容がここに入ります</p>
+    </div>
+  </div>
+  <div class="tab_content" id="design_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">デザインの内容がここに入ります</p>
+    </div>
+  </div>
+</div>
