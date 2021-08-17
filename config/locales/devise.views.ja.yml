@@ -32,7 +32,9 @@ ja:
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
             new_profile_picture:
-              invalid_image_type: にはJPEG,GIF,PNG形式の画像を指定してください。
+              invalid_image_type: "にはJPEG,GIF,PNG形式の画像を指定してください。"
+            new_music_file:
+              invalid_music_type: "にはMP3,WAV形式のファイルを指定してください。"
     attributes:
       user:
         current_password: "現在のパスワード"

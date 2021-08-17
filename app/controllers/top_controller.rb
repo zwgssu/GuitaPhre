@@ -1,5 +1,5 @@
 class TopController < ApplicationController
   def index
-    @user = current_user
+    @users = User.limit(6).order('created_at DESC')
   end
 end
