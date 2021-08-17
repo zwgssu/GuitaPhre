@@ -1,0 +1,44 @@
+<h2>フレーズ投稿</h2>
+
+<%= form_for(model: @phrase) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field mt-3 mb-3">
+    <%= f.label :new_music_file, "音声ファイル(wav,mp3)" %>
+    <div><%= f.file_field :new_music_file %></div>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :body, "投稿者コメント" %>
+    <%= f.text_area :body, rows: 6, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :guitar, "使用機材等" %><br />
+    <%= f.text_area :guitar, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :tag_1, "タグ(3つまで登録可能)" %><br />
+    <%= f.text_field :tag_1, class: "form-control", size: 10 %>
+    <% f.label :tag_2 %>
+    <%= f.text_filed :tag_2, class: "form-control", size: 10 %>
+    <% f.label :tag_3 %>
+    <%= f.text_filed :tag_3, class: "form_control", size: 10 %>
+  </div>
+
+
+  <% end %>
+
+  <div class="actions mb-3">
+    <%= f.submit "編集完了", class: "btn btn-primary" %>
+  </div>
+  
+  <%= link_to "Back", :back %>
+<div class="border-bottom mt-5"></div>
+<% end %>

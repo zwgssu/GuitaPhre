@@ -10,7 +10,7 @@ class PhrasesController < ApplicationController
   end
 
   def new
-    @phrase = Phrase.new
+    @phrase = current_user.phrases.build
   end
 
   def edit

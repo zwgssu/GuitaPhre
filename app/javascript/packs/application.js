@@ -10,6 +10,7 @@ import "bootstrap"
 import "../stylesheets/application"
 
 require("jquery")
+require("audiojs")
 
 Rails.start()
 Turbolinks.start()
