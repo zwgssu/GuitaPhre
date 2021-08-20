@@ -2,7 +2,7 @@ class PhrasesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   def index
-    @phrases = Phrase.page(params[:page]).per(20).order('created_at DESC')
+    @phrases = Phrase.page(params[:page]).per(6).order('created_at DESC')
   end
 
   def show
@@ -36,7 +36,7 @@ class PhrasesController < ApplicationController
 
   def destroy
     @phrase.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to user_path(current_user), notice: "フレーズを削除しました。"
   end
 
   private

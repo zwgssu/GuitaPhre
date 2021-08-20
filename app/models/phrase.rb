@@ -1,5 +1,8 @@
 class Phrase < ApplicationRecord
   belongs_to :user
+  
+  has_one_attached :music_file
+  attribute :new_music_file
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :body, presence: true, length: { maximum: 500 }
@@ -25,7 +28,4 @@ class Phrase < ApplicationRecord
       self.music_file = new_music_file
     end
   end
-
-  has_one_attached :music_file
-  attribute :new_music_file
 end

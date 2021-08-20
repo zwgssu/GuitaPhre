@@ -1,8 +1,86 @@
-<%= audio_tag @phrase.music_file %>
+  <% @page_title = @phrase.title %>
 
-<!-- audiojsの初期化 -->
-<script>
-  audiojs.events.ready(function() {
-    var as = audiojs.createAll();
-  });
-</script>
+<div class="row justify-content-center">
+  <div class="col-2">
+    <div><%= cheak_use_picture(@phrase.user) %></div>
+    <div class="d-flex justify-content-center"><%= @phrase.user.username %></div>
+  </div>
+  <div class="col-10 d-flex align-items-center">
+    <div class="rounded bg-white w-100 pt-3 pb-3">
+    <h2 class="d-flex justify-content-center"><%= @phrase.title %></h2></div>
+  </div>
+</div>
+<% if user_signed_in? %>
+<div class="row mb-3">
+  <div class="col-2">
+    <div class="balloon1-top">
+    <%= simple_format(@phrase.guitar) %>
+    </div>
+  </div>
+  <div class="col-10">
+    <div class="rounded bg-white p-3">
+    <div class="d-flex justify-content-start mb-2"><h5><u>フレーズ</u></h5></div>
+      <div class="d-flex justify-content-center mb-2">
+        <%= audio_tag url_for(@phrase.music_file), controls: true, controlslist: "nodownload" %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <% unless user_signed_in? %>
+          <p><%= link_to "会員登録", new_user_registration_path %>してフレーズをダウンロード</p>
+        <% else %>
+          <%= link_to "ダウンロード", rails_blob_path(@phrase.music_file), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-2">
+  </div>
+  <div class="col-10">
+      
+    <div class="rounded bg-white p-3">
+      <div class="d-flex justify-content-start mb-2"><h5><u>投稿者コメント</u></h5></div>
+
+      <div class="mb-3 p-2"><%= simple_format(@phrase.body) %></div>
+      
+
+      <div class="p-2">
+        タグ：<%= @phrase.tag_1 %> <%= @phrase.tag_2 %> <%= @phrase.tag_3 %>
+      </div>
+      <div class="d-flex justify-content-end p-2">
+      <% if current_user == @phrase.user %>
+        <%= link_to image_tag("pencil-square.svg", alt: "edit"), edit_phrase_path(@phrase), class: "me-2" %>
+        <%= link_to image_tag("trash.svg", alt: "delete"), @phrase, method: :delete, data: { confirm: "フレーズを削除しますか？" } %>
+      <% end %>
+        <%= @phrase.created_at.strftime("%Y-%m-%d %H:%M") %>
+        グッドボタン
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-2">
+  </div>
+  <div class="col-10">
+    <div class="rounded bg-white p-3">
+      <div class="d-flex justify-content-start mb-2"><h5><u>コメント</u></h5></div>
+    </div>
+    <div class="p-2">
+    </div>
+  </div>
+</div>
+
+<% else %>
+<div class="row mt-3">
+  <div class="col-2">
+  </div>
+  <div class="col-10">
+    <div class="rounded bg-white p-3">
+      <div class="d-flex justify-content-center mt-4 mb-4"><h5>※<%= @phrase.user.username %>をfavすることで閲覧できます。</h5></div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,3 +1,4 @@
+<div class="bg-white p-3">
 <% unless user_signed_in? %>
 <div class="border rounded-3 p-3" style="background-color:lightblue;">
   <%= link_to "会員登録", new_user_registration_path %>してギターフレーズを投稿しませんか？ =>もしくは<%= link_to "ログイン", new_user_session_path %>
@@ -26,3 +27,4 @@
   <% end %>
 </div>
 <%= link_to "もっと見る", users_path, class: "d-flex justify-content-end" %>
+</div>

@@ -1,7 +1,9 @@
-<h2>フレーズ投稿</h2>
+<% @page_title = "フレーズ投稿" %>
 
-<%= form_for(model: @phrase) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<h2><%= @page_title %></h2>
+
+<%= form_with(model: @phrase) do |f| %>
+  <%= render "devise/shared/error_messages", resource: f.object %>
 
   <div class="field mt-3 mb-3">
     <%= f.label :new_music_file, "音声ファイル(wav,mp3)" %>
@@ -23,20 +25,30 @@
     <%= f.text_area :guitar, class: "form-control" %>
   </div>
 
-  <div class="field mb-3">
-    <%= f.label :tag_1, "タグ(3つまで登録可能)" %><br />
-    <%= f.text_field :tag_1, class: "form-control", size: 10 %>
-    <% f.label :tag_2 %>
-    <%= f.text_filed :tag_2, class: "form-control", size: 10 %>
-    <% f.label :tag_3 %>
-    <%= f.text_filed :tag_3, class: "form_control", size: 10 %>
+  <%= f.label :tag_1, "タグ(3つまで登録可能)" %>
+  <div class="row mb-3">
+    <div class="col-sm-2">
+      
+      <%= f.text_field :tag_1, class: "form-control", size: 10 %>
+    </div>
+    <div class="col-sm-2">
+      <% f.label :tag_2 %>
+      <%= f.text_field :tag_2, class: "form-control", size: 10 %>
+    </div>
+    <div class="col-sm-2">
+      <% f.label :tag_3 %>
+      <%= f.text_field :tag_3, class: "form-control", size: 10 %>
+    </div>
   </div>
 
-
-  <% end %>
+  <div class="field mb-3">
+    <%= f.check_box :user_only, {class: "check_box"}, true, false %>
+    <%= f.label :user_only, "ログインユーザー限定公開" %>
+  </div>
+  
 
   <div class="actions mb-3">
-    <%= f.submit "編集完了", class: "btn btn-primary" %>
+    <%= f.submit "投稿", class: "btn btn-primary" %>
   </div>
   
   <%= link_to "Back", :back %>
