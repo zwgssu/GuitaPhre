@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_many :phrases
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -51,4 +50,46 @@ class User < ApplicationRecord
     end
   end
     
+  has_many :phrases
+  has_many :themes
+  has_many :favorite_users, dependent: :destroy
+  has_many :liking_users, through: :favorite_users, source: :fav_user
+  has_many :revers_of_favorite_users, class_name: "FavoriteUser", foreign_key: "fav_user_id"
+  has_many :likers, through: :revers_of_favorite_users, source: :user
+  has_many :favorite_phrases, dependent: :destroy
+  has_many :liking_phrases, through: :favorite_phrases, source: :phrase
+
+  def favorite_user(other_user)
+    unless self == other_user
+      self.favorite_users.find_or_create_by(fav_user_id: other_user.id)
+    end
+  end
+
+  def favorite_phrase(other_phrase)
+    self.favorite_phrases.find_or_create_by(phrase_id: other_phrase.id)
+  end
+
+  def unfavorite_user(other_user)
+    fav = self.favorite_users.find_by(fav_user_id: other_user.id) 
+    fav.destroy if fav
+  end
+
+  def unfavorite_phrase(other_phrase)
+    fav = self.favorite_phrases.find_by(phrase_id: other_phrase.id)
+    fav.destroy if fav
+  end
+
+  def liking_user?(other)
+    self.liking_users.include?(other)
+  end
+
+  def liking_phrase?(other)
+    self.liking_phrases.include?(other)
+  end
+
+  def feed_phrases
+    Phrase.where(user_id: self.liking_user_ids + [self.id])
+  end
+
+
 end

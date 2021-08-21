@@ -1,0 +1,6 @@
+<% if current_user.liking_user?(user) %>
+  <%= link_to "fav!", favorite_users_path(fav_user_id: user.id), method: :delete, remote: true, class: "btn btn-primary" %>
+<% else %>
+  <%= link_to "fav!", favorite_users_path(fav_user_id: user.id), method: :post, remote: true, class: "btn btn-outline-primary" %>
+<% end%>
+(<%= user.likers.count %>)

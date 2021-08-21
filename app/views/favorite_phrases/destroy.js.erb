@@ -1,0 +1,1 @@
+$('#good_buttons_<%= @phrase.id %>').html("<%= escape_javascript(render partial: 'favorite_phrases/good', locals: {phrase: @phrase}) %>");

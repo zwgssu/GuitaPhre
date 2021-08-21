@@ -1,0 +1,44 @@
+<ul class="nav nav-tabs">
+ <% if @user == current_user %>
+  <li class="nav-item">
+    <%= link_to "マイページ", mypage_users_path, class: "nav-link" %>
+  </li>
+<% end %>
+  <li class="nav-item">
+  <a href=<%= user_path(@user) %> class="nav-link">フレーズ(<%= @user.phrases.count %>)</a>
+  </li>
+  <li class="nav-item">
+    <a href=<%= themes_user_path(@user) %> class="nav-link active">テーマ(<%= @user.themes.count %>)</a>
+  </li>
+  <li class="nav-item">
+    <a href=<%= favorite_phrases_user_path(@user) %> class="nav-link">お気に入りフレーズ()</a>
+  </li>
+  <li class="nav-item">
+    <a href=<%= favorite_users_user_path(@user) %> class="nav-link">お気に入りユーザー(<%= @user.liking_users.count %>)</a>
+  </li>
+</ul>
+<div class="contaier border-start border-end border-bottom bg-white p-3">
+
+  <div class="row p-3">
+  <% @users.each do |user| %>
+    <div class="col-sm-6 mb-4">
+      <div class="d-inline-block">
+        <%= cheak_use_picture(user, "64x64") %>
+      </div>
+      <div class="d-inline-block">
+        <%= link_to user.username, user_path(user) %><br>
+        <% if user.introduction.present? %>
+          <%= truncate(user.introduction, length: 50) %>
+        <% else %>
+          自己紹介はありません。
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+</div>
+
+<div class="question-index">
+  <%= paginate @users, remote: true %>
+</div>

@@ -1,0 +1,26 @@
+<div class="bg-white p-3">
+
+<% if @value.present? %>
+
+<p class="mb-0">検索ワード：<%= @value %></p>
+<p>検索結果数：<%= @dates.count %></p>
+
+<% if @model == "user" %>
+    <%= render "layouts/user_list", users: @dates %>
+<% end %>
+
+<% if @model == "phrase" %>
+  <%= render "phrases/phrases", phrases: @dates %>
+<% end %>
+
+<% if @model == "theme" %>
+  <%= render "themes/themes", themes: @dates %>
+<% end %>
+<div class="mt-3">
+<%= paginate @dates %>
+</div>
+
+<% else %>
+検索ワードを入力して下さい。
+<% end %>
+</div>

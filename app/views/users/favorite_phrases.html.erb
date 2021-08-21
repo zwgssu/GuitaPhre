@@ -1,0 +1,10 @@
+<% @page_title = @user.username + "のユーザーページ" %>
+
+        
+        <div class="user-index">
+          <%= paginate @users, remote: true %>
+        </div>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<% @page_title = "フレーズ一覧" %>
+
+<div class="bg-white p-3">
+  <h2 class="text-center"><%= @page_title %></h2>
+  
+  <%= render "phrases", phrases: @phrases %>
+  <div class="mt-3">
+  <%= paginate @phrases %>
+  </div>
+</div>
