@@ -1,46 +1,7 @@
-<% @page_title = @user.username + "のユーザーページ" %>
+<%= render "user_head" %>
 
-<div class="row mb-3">
-  <div class="col-3 d-flex justify-content-center">
-    <%= cheak_use_picture(@user, "200x200") %>
-  </div>
-  <div class="col-9">
-    <h2><%= @user.username %></h2>
-    <% if @user.introduction.present? %>
-      <%= simple_format(@user.introduction) %>
-    <% else %>
-      自己紹介はありません。
-    <% end %>
-  </div>
-  <div class="d-flex justify-content-end">ここにファボボタン</div>
-</div>
+<%= render "user_phrases" %>
 
-<div class="tabs">
-  <input id="all" type="radio" name="tab_item" checked>
-  <label class="tab_item" for="all">フレーズ</label>
-  <input id="programming" type="radio" name="tab_item">
-  <label class="tab_item" for="programming">テーマ</label>
-  <input id="design" type="radio" name="tab_item">
-  <label class="tab_item" for="design">Fav</label>
-  <div class="tab_content" id="all_content">
-    <div class="tab_content_description">
-      <p class="c-txtsp">aaaa<br>aaaa<br>eeeee<br>aaaa<br>eeeee</p>
-    </div>
-  </div>
-  <div class="tab_content" id="programming_content">
-    <div class="tab_content_description">
-      <p class="c-txtsp"><%= simple_format(@user.introduction) %></p>
-    </div>
-  </div>
-  <div class="tab_content" id="design_content">
-    <div class="tab_content_description">
-      <p class="c-txtsp">
-        <%= render "layouts/user_list", user: @users %>
-        
-        <div class="user-index">
-          <%= paginate @users, remote: true %>
-        </div>
-      </p>
-    </div>
-  </div>
+<div class="user-index">
+  <%= paginate @phrases, remote: true %>
 </div>

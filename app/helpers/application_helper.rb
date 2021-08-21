@@ -12,4 +12,14 @@ module ApplicationHelper
     title = @page_title + " - " + title if @page_title
     title
   end
+
+  def user_fav_btn(user)
+    unless @user == current_user
+      if current_user.liking_user?(user)
+        link_to "ファン解除", favorite_user_path(fav_user_id: user.id), method: :delete, class: "btn btn-danger"
+      else
+        link_to "ファンになる", favorite_users_path(fav_user_id: user.id), method: :post, class: "btn btn-success"
+      end
+    end
+  end
 end

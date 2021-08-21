@@ -1,5 +1,7 @@
 class Phrase < ApplicationRecord
   belongs_to :user
+  has_many :favorite_phrases
+  has_many :likers, through: :favorite_phrases, source: :user
   
   has_one_attached :music_file
 

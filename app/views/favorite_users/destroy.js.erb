@@ -1,0 +1,1 @@
+$('#fav_buttons_<%= @user.id %>').html("<%= escape_javascript(render partial: 'fav', locals: {user: @user}) %>");
