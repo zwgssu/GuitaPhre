@@ -43,7 +43,7 @@ class PhrasesController < ApplicationController
 
   def phrase_params
     params.require(:phrase).permit(
-      :new_music_file,
+      :music_file,
       :title,
       :body,
       :tag_1,

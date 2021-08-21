@@ -1,0 +1,38 @@
+  <% @page_title = @theme.title %>
+
+<div class="container bg-white mb-4 pt-3 pb-4">
+    <div class="d-flex justify-content-center align-items-baseline mb-3 small">
+        <%= cheak_use_picture(@theme.user, "32x32") %>&nbsp;
+        <%= link_to @theme.user.username, user_path(@theme.user), class: "text-dark" %>&nbsp;<%= @theme.created_at.strftime("%Y-%m-%d %H:%M") %>に作成
+    </div>
+  <h3 class="d-flex align-items-center justify-content-center"><%= @theme.title %></h3>
+</div>
+
+<div class="rounded bg-white p-3 mb-4">
+<div class="d-flex justify-content-start mb-2"><h5><u>テーマ</u></h5></div>
+  <div class="d-flex justify-content-center mb-2">
+    <%= audio_tag url_for(@theme.music_file), controls: true, controlslist: "nodownload" %>
+  </div>
+  <div class="d-flex justify-content-center">
+    <% unless user_signed_in? %>
+      <p><%= link_to "会員登録", new_user_registration_path %>してテーマをダウンロード</p>
+    <% else %>
+      <%= link_to "ダウンロード", rails_blob_path(@theme.music_file), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+  <div class="rounded bg-white p-3 mb-4">
+    <div class="d-flex justify-content-start mb-2"><h5><u>概要</u></h5></div>
+
+  </div>
+
+  <div class="rounded bg-white p-3 mb-4">
+    <div class="d-flex justify-content-start mb-2"><h5><u>コメント</u></h5></div>
+  </div>
+
+
+
+  <div class="rounded bg-white p-3">
+    <div class="d-flex justify-content-center mt-4 mb-4"><h5>※<%= @theme.user.username %>をfavすることで閲覧できます。</h5></div>
+  </div>

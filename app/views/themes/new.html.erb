@@ -1,0 +1,45 @@
+<% @page_title = "テーマ投稿" %>
+
+<h2><%= @page_title %></h2>
+
+<%= form_with(model: @theme) do |t| %>
+  <%= render "devise/shared/error_messages", resource: t.object %>
+
+  <div class="field mt-3 mb-3">
+    <%= t.label :music_file, "音声ファイル(wav,mp3)" %>
+    <div><%= t.file_field :music_file %></div>
+  </div>
+
+  <div class="field mb-3">
+    <%= t.label :title, "タイトル" %>
+    <%= t.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= t.label :overview, "テーマ概要" %>
+    <%= t.text_area :overview, rows: 6, class: "form-control" %>
+  </div>
+
+  <%= t.label :tag_1, "タグ(3つまで登録可能)" %>
+  <div class="row mb-3">
+    <div class="col-sm-2">
+      
+      <%= t.text_field :tag_1, class: "form-control", size: 10 %>
+    </div>
+    <div class="col-sm-2">
+      <% t.label :tag_2 %>
+      <%= t.text_field :tag_2, class: "form-control", size: 10 %>
+    </div>
+    <div class="col-sm-2">
+      <% t.label :tag_3 %>
+      <%= t.text_field :tag_3, class: "form-control", size: 10 %>
+    </div>
+  </div>
+  
+  <div class="actions mb-3">
+    <%= t.submit "投稿", class: "btn btn-primary" %>
+  </div>
+  
+  <%= link_to "Back", :back %>
+<div class="border-bottom mt-5"></div>
+<% end %>

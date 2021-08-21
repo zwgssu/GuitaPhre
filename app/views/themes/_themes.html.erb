@@ -1,30 +1,30 @@
-<% phrases.each do |f| %>
+<% themes.each do |t| %>
 <div class="border-bottom">
   <div class="row pt-3 pb-3">
     <div class="col-sm-8">
       <div class="row">
         <div class="col-3 d-flex justify-content-center align-items-center">
-          <%= cheak_use_picture(f.user, "124x124") %>
+          <%= cheak_use_picture(t.user, "124x124") %>
         </div>
         <div class="col-9">
           <div class="mb-2">
-            <%= link_to f.user.username, user_path(f.user), class: "text-dark" %> <%= f.created_at.strftime("%Y-%m-%d %H:%M")%>
+            <%= link_to t.user.username, user_path(t.user), class: "text-dark" %> <%= t.created_at.strftime("%Y-%m-%d %H:%M")%>
           </div>
           <div class="pt-3 pb-3">
-            <h3><%= link_to f.title, phrase_path(f), class: "text-dark d-block p-3" %></h3>
+            <h3><%= link_to t.title, theme_path(t), class: "text-dark d-block p-3" %></h3>
           </div>
           <div>
-            <u><%= f.tag_1 %></u> <u><%= f.tag_2 %></u> <u><%= f.tag_3 %></u>
+            <u><%= t.tag_1 %></u> <u><%= t.tag_2 %></u> <u><%= t.tag_3 %></u>
           </div>
           <div>
-            <%= link_to "詳しく見る", phrase_path(f), class: "text-dark" %> good()
+            <%= link_to "詳しく見る", theme_path(t), class: "text-dark" %>
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
     <% if user_signed_in? %>
-      <%= audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload" %>
+      <%= audio_tag url_for(t.music_file), controls: true, controlslist: "nodownload" %>
     <% else %>
       favユーザー限定フレーズ
     <% end %>

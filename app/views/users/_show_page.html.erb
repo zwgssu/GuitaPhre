@@ -1,12 +1,16 @@
 <% @page_title = @user.username + "のユーザーページ" %>
 
 <div class="row mb-3">
-  <div class="col-sm-3">
-    <%= cheak_use_picture(@user) %>
+  <div class="col-3 d-flex justify-content-center">
+    <%= cheak_use_picture(@user, "200x200") %>
   </div>
-  <div class="col-sm-9">
-    <h2><%= @user.username %><br></h2>
-    <%= simple_format(@user.introduction) %>
+  <div class="col-9">
+    <h2><%= @user.username %></h2>
+    <% if @user.introduction.present? %>
+      <%= simple_format(@user.introduction) %>
+    <% else %>
+      自己紹介はありません。
+    <% end %>
   </div>
   <div class="d-flex justify-content-end">ここにファボボタン</div>
 </div>
@@ -31,18 +35,7 @@
   <div class="tab_content" id="design_content">
     <div class="tab_content_description">
       <p class="c-txtsp">
-
-        <div class="row">
-          <% @users.each do |user| %>
-              <div class="col-2 p-3 mb-3">
-                <%= cheak_use_picture(user) %>
-              </div>
-              <div class="col-2">
-                <%= link_to user.username, user_path(user) %><br>
-                <%= truncate(user.introduction, length: 50) %>
-              </div>
-          <% end %>
-        </div>
+        <%= render "layouts/user_list", user: @users %>
         
         <div class="user-index">
           <%= paginate @users, remote: true %>

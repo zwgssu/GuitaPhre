@@ -71,6 +71,8 @@ GEM
       activesupport (= 6.1.4)
       marcel (~> 1.0.0)
       mini_mime (>= 1.1.0)
+    activestorage-validator (0.1.4)
+      rails (>= 5.2.0)
     activesupport (6.1.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
@@ -271,6 +273,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
+  activestorage-validator
   audiojs-rails
   bootsnap (>= 1.4.4)
   byebug

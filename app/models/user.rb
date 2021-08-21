@@ -51,5 +51,6 @@ class User < ApplicationRecord
   end
     
   has_many :phrases
+  has_many :themes
   
 end
