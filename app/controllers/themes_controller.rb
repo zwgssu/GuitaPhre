@@ -1,13 +1,14 @@
 class ThemesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
-
   def index
     @themes = Theme.page(params[:page]).per(6).order('created_at DESC')
   end
 
   def show
     @theme = Theme.find(params[:id])
+    @theme_comment = ThemeComment.new
+    @theme_comments = @theme.theme_comments.all.order("created_at DESC")
   end
 
   def new
@@ -27,9 +28,16 @@ class ThemesController < ApplicationController
   end
 
   def update
+    if @theme.update(theme_params)
+      redirect_to @theme, notice: "フレーズを更新しました。"
+    else
+      render "new"
+    end
   end
 
   def destroy
+    @theme.destroy
+    redirect_to user_path(current_user), notice: "フレーズを削除しました。"
   end
 
   private

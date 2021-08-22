@@ -1,7 +1,9 @@
 class Phrase < ApplicationRecord
   belongs_to :user
-  has_many :favorite_phrases
+  has_many :favorite_phrases, dependent: :destroy
   has_many :likers, through: :favorite_phrases, source: :user
+  has_many :comments, dependent: :destroy
+  has_many :commented_by, through: :comments, source: :user
   
   has_one_attached :music_file
 
@@ -9,8 +11,8 @@ class Phrase < ApplicationRecord
   validates :body, presence: true, length: { maximum: 500 }
   validates :guitar, length: { maximum: 300 }
   validates :user_only, inclusion: { in: [true, false]}
-  validate :music_file_presence
-  validates :music_file, blob: { content_type: ['audio/mpeg', 'audio/x-wav', 'audio/flac', 'audio/ogg', "audio/wav"] }
+  validate :music_file_presence, on: :create
+  validates :music_file, blob: { content_type: ['audio/mpeg', 'audio/x-wav', 'audio/flac', 'audio/ogg', "audio/wav"] }, on: :create
   with_options length: { maximum: 30 } do
     validates :tag_1
     validates :tag_2

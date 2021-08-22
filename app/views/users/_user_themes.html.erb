@@ -11,7 +11,7 @@
     <a href=<%= themes_user_path(@user) %> class="nav-link active">テーマ(<%= @user.themes.count %>)</a>
   </li>
   <li class="nav-item">
-    <a href=<%= favorite_phrases_user_path(@user) %> class="nav-link">お気に入りフレーズ()</a>
+    <a href=<%= favorite_phrases_user_path(@user) %> class="nav-link">goodしたフレーズ(<%= @user.liking_phrases.count %>)</a>
   </li>
   <li class="nav-item">
     <a href=<%= favorite_users_user_path(@user) %> class="nav-link">お気に入りユーザー(<%= @user.liking_users.count %>)</a>
@@ -32,10 +32,13 @@
                 <%= link_to t.user.username, user_path(t.user), class: "text-dark" %> <%= t.created_at.strftime("%Y-%m-%d %H:%M")%>
               </div>
               <div class="pt-3 pb-3">
-                <h3><%= link_to t.title, theme_path(t), class: "text-dark d-block p-3" %></h3>
+                <h3><%= image_tag "music.svg", alt: "guitar", size: "28x28", class: "d-inline-block" %><%= link_to t.title, theme_path(t), class: "text-dark d-inline-block p-3" %></h3>
               </div>
               <div>
-                <u><%= t.tag_1 %></u> <u><%= t.tag_2 %></u> <u><%= t.tag_3 %></u>
+              <%= image_tag "tag.svg" %>
+                <%= link_to t.tag_1, search_path(search: {model: "theme", value: t.tag_1}), class: "text-dark" %>
+                <%= link_to t.tag_2, search_path(search: {model: "theme", value: t.tag_2}), class: "text-dark" %>
+                <%= link_to t.tag_3, search_path(search: {model: "theme", value: t.tag_3}), class: "text-dark" %>
               </div>
               <div>
                 <%= link_to "詳しく見る", theme_path(t), class: "text-dark" %>

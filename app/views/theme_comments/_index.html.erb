@@ -1,4 +1,4 @@
-<% comments.each do |c| %>
+<% theme_comments.each do |c| %>
   <div class="row">
     <div class="col-2 d-flex justify-content-end">
       <%= cheak_use_picture(c.user, "64x64") %>
@@ -8,7 +8,7 @@
       <% if user_signed_in? %>
         <% if c.user.id == current_user.id %>
           投稿日：<%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
-            <%= link_to phrase_comment_path(c.phrase_id, c.id), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
+            <%= link_to theme_theme_comment_path(c.theme_id, c.id), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
               <span class="panel-icon">
                 <%= image_tag "trash.svg" %>
               </span>

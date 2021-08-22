@@ -13,13 +13,68 @@ module ApplicationHelper
     title
   end
 
-  def user_fav_btn(user)
-    unless @user == current_user
-      if current_user.liking_user?(user)
-        link_to "ファン解除", favorite_user_path(fav_user_id: user.id), method: :delete, class: "btn btn-danger"
+  require 'uri'  
+  def convert_url_into_a_tag(text)
+    URI.extract(text, ['http', 'https']).uniq.each do |url|
+      sub_text = ""
+      sub_text << "<a href=" << url << " target=\"_blank\">" << url << "</a>"
+
+      text.gsub!(url, sub_text)
+    end
+   return text
+  end
+
+  def member_only?(phrase)
+    !!phrase.user_only
+  end
+
+  def fav_user_only?(f)
+    if user_signed_in?
+      if member_only?(f)
+        if current_user == f.user
+          audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"
+        else
+          if current_user.liking_user?(f.user)
+            audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"
+          else
+            "favユーザー限定フレーズ"
+          end
+        end
       else
-        link_to "ファンになる", favorite_users_path(fav_user_id: user.id), method: :post, class: "btn btn-success"
+        audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"
+      end
+    else
+      if member_only?(f)
+        "favユーザー限定フレーズ"
+      else
+        audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"
       end
     end
   end
+
+  def fav_user_only_link?(f, str)
+    if user_signed_in?
+      if member_only?(f)
+        if current_user == f.user
+          link_to str, phrase_path(f), class: "text-dark"
+        else
+          if current_user.liking_user?(f.user)
+            link_to str, phrase_path(f), class: "text-dark"
+          else
+            str
+          end
+        end
+      else
+        link_to str, phrase_path(f), class: "text-dark"
+      end
+    else
+      if member_only?(f)
+        str
+      else
+        link_to str, phrase_path(f), class: "text-dark"
+      end
+    end
+  end
+  
+
 end

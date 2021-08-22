@@ -5,6 +5,10 @@
 <%= form_with(model: @theme) do |t| %>
   <%= render "devise/shared/error_messages", resource: t.object %>
 
+    <div class="field mb-3">
+      <%= audio_tag url_for(@theme.music_file), controls: true, controlslist: "nodownload" %>
+    </div>
+
   <div class="field mb-3">
     <%= t.label :title, "タイトル" %>
     <%= t.text_field :title, class: "form-control" %>

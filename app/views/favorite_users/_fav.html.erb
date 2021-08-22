@@ -1,6 +1,8 @@
+<% unless user == current_user %>
 <% if current_user.liking_user?(user) %>
-  <%= link_to "fav!", favorite_users_path(fav_user_id: user.id), method: :delete, remote: true, class: "btn btn-primary" %>
+  <%= link_to "fav!", favorite_users_path(fav_user_id: user.id), method: :delete, remote: true, class: "btn btn-info mb-2 text-decoration-none" %>
 <% else %>
-  <%= link_to "fav!", favorite_users_path(fav_user_id: user.id), method: :post, remote: true, class: "btn btn-outline-primary" %>
+  <%= link_to "fav!", favorite_users_path(fav_user_id: user.id), method: :post, remote: true, class: "btn btn-outline-info mb-2 text-decoration-none" %>
 <% end%>
-(<%= user.likers.count %>)
+<% end %>
+<div>Fav!されている数(<%= user.likers.count %>)</div>

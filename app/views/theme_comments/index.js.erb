@@ -1,0 +1,2 @@
+$("#comments_area").html("<%= j(render 'index', { theme_comments: @theme.theme_comments.order('created_at DESC') }) %>")
+$("textarea").val('')

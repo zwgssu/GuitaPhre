@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def favorite_users
-    @user = current_user
+    @user = User.find(params[:id])
     @users = @user.liking_users.page(params[:page]).per(6).order('created_at DESC')
     respond_to do |format|
       format.html
@@ -23,6 +23,12 @@ class UsersController < ApplicationController
   end
 
   def favorite_phrases
+    @user = User.find(params[:id])
+    @phrases = @user.liking_phrases.page(params[:page]).per(3).order("created_at DESC")
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def themes

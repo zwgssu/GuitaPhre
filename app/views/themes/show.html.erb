@@ -24,15 +24,32 @@
 
   <div class="rounded bg-white p-3 mb-4">
     <div class="d-flex justify-content-start mb-2"><h5><u>概要</u></h5></div>
-
+      <div class="mb-3 p-2"><%= convert_url_into_a_tag(h(simple_format(@theme.overview))).html_safe %></div>
+      <div class="p-2">
+        <%= image_tag "tag.svg" %>
+          <%= link_to @theme.tag_1, search_path(search: {model: "theme", value: @theme.tag_1}), class: "text-dark" %>
+          <%= link_to @theme.tag_2, search_path(search: {model: "theme", value: @theme.tag_2}), class: "text-dark" %>
+          <%= link_to @theme.tag_3, search_path(search: {model: "theme", value: @theme.tag_3}), class: "text-dark" %>
+      </div>
   </div>
 
   <div class="rounded bg-white p-3 mb-4">
-    <div class="d-flex justify-content-start mb-2"><h5><u>コメント</u></h5></div>
-  </div>
+    <div class="d-flex justify-content-start mb-2"><h5><u>コメント(<%= @theme.theme_commented_by.count %>)</u></h5></div>
 
-
-
-  <div class="rounded bg-white p-3">
-    <div class="d-flex justify-content-center mt-4 mb-4"><h5>※<%= @theme.user.username %>をfavすることで閲覧できます。</h5></div>
+    <div class="mb-3">
+      <% if user_signed_in? %>
+        <%= render partial: 'theme_comments/form', locals: { theme_comment: @theme_comment, theme: @theme } %>
+      <% else %>
+          <div class="d-flex justify-content-center mt-4 mb-4">※ログインすることでコメントできます。</div>
+      <% end %>
+    </div>
+      <% if @theme_comments %>
+        <div class="comments_index">
+          <div id='comments_area'>
+            <%= render partial: 'theme_comments/index', locals: { theme_comments: @theme_comments } %>
+          </div>
+        </div>
+      <% else %>
+        コメントはまだありません。
+      <% end %>
   </div>

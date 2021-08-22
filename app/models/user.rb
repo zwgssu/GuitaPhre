@@ -50,14 +50,16 @@ class User < ApplicationRecord
     end
   end
     
-  has_many :phrases
-  has_many :themes
+  has_many :phrases, dependent: :destroy
+  has_many :themes, dependent: :destroy
   has_many :favorite_users, dependent: :destroy
   has_many :liking_users, through: :favorite_users, source: :fav_user
   has_many :revers_of_favorite_users, class_name: "FavoriteUser", foreign_key: "fav_user_id"
   has_many :likers, through: :revers_of_favorite_users, source: :user
   has_many :favorite_phrases, dependent: :destroy
   has_many :liking_phrases, through: :favorite_phrases, source: :phrase
+  has_many :comments, dependent: :destroy
+  has_many :theme_comments, dependent: :destroy
 
   def favorite_user(other_user)
     unless self == other_user
@@ -90,6 +92,7 @@ class User < ApplicationRecord
   def feed_phrases
     Phrase.where(user_id: self.liking_user_ids + [self.id])
   end
+
 
 
 end

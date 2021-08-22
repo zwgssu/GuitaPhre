@@ -1,12 +1,15 @@
 class PhrasesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :fav_only?, only: [:show]
   def index
     @phrases = Phrase.page(params[:page]).per(6).order('created_at DESC')
   end
 
   def show
     @phrase = Phrase.find(params[:id])
+    @comment = Comment.new
+    @comments = @phrase.comments.all.order("created_at DESC")
   end
 
   def new
@@ -60,4 +63,21 @@ class PhrasesController < ApplicationController
       redirect_to root_url
     end
   end
+
+  def fav_only?
+    @phrase = Phrase.find(params[:id])
+    if @phrase.user_only
+      if user_signed_in?
+        unless current_user == @phrase.user
+          if current_user.liking_user?(@phrase.user)
+            else
+              redirect_to root_path
+          end
+        end
+      else
+        redirect_to root_path
+      end
+    end
+  end
+
 end

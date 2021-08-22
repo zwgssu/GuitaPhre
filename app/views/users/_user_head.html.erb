@@ -3,14 +3,20 @@
     <%= cheak_use_picture(@user, "200x200") %>
   </div>
   <div class="col-9 bg-white p-3">
-    <div class="border-bottom mb-2"><h2><%= @user.username %></h2>
-      fav!されている数(<%= @user.likers.count %>)
+    <div class="border-bottom mb-2"><h2 class="d-inline-block"><%= @user.username %></h2>
+      <% if user_signed_in? %>
+        <span id="fav_buttons_<%= @user.id %>"><%= render "favorite_users/fav", user: @user %></span>
+      <% else %>
+        fav(<%= @user.liking_users.count %>)
+      <% end %>
+
     </div>
     <% if @user.introduction.present? %>
-      <%= simple_format(@user.introduction) %>
+      <%= convert_url_into_a_tag(h(simple_format(@user.introduction))).html_safe %>
     <% else %>
       自己紹介はありません。
     <% end %>
-  <div class="d-flex justify-content-end" id="fav_buttons_<%= @user.id %>"><%= render "favorite_users/fav", user: @user %></div>
+  <div class="d-flex justify-content-end">
+  </div>
   </div>
 </div>

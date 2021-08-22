@@ -20,8 +20,12 @@ Rails.application.routes.draw do
       get :mypage
     end
   end
-  resources :phrases
-  resources :themes
+  resources :phrases do
+    resources :comments, only: [:create, :destroy]
+  end
+  resources :themes do
+    resources :theme_comments, only: [:create, :destroy]
+  end
   resource :favorite_users, only: [:create, :destroy]
   resource :favorite_phrases, only: [:create, :destroy]
 

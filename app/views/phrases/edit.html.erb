@@ -5,6 +5,10 @@
 <%= form_with(model: @phrase) do |f| %>
   <%= render "devise/shared/error_messages", resource: f.object %>
 
+    <div class="field mb-3">
+      <%= audio_tag url_for(@phrase.music_file), controls: true, controlslist: "nodownload" %>
+    </div>
+
   <div class="field mb-3">
     <%= f.label :title, "タイトル" %>
     <%= f.text_field :title, class: "form-control" %>
@@ -38,7 +42,7 @@
 
   <div class="field mb-3">
     <%= f.check_box :user_only, {class: "check_box"}, true, false %>
-    <%= f.label :user_only, "ログインユーザー限定公開" %>
+    <%= f.label :user_only, "自分をfavしているユーザーのみに公開" %>
   </div>
   
 

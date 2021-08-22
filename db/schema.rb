@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_140559) do
+ActiveRecord::Schema.define(version: 2021_08_22_070714) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2021_08_21_140559) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "phrase_id", null: false
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["phrase_id"], name: "index_comments_on_phrase_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorite_phrases", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -73,6 +83,16 @@ ActiveRecord::Schema.define(version: 2021_08_21_140559) do
     t.index ["user_id"], name: "index_phrases_on_user_id"
   end
 
+  create_table "theme_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "theme_id", null: false
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["theme_id"], name: "index_theme_comments_on_theme_id"
+    t.index ["user_id"], name: "index_theme_comments_on_user_id"
+  end
+
   create_table "themes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.string "overview", null: false
@@ -104,10 +124,14 @@ ActiveRecord::Schema.define(version: 2021_08_21_140559) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "phrases"
+  add_foreign_key "comments", "users"
   add_foreign_key "favorite_phrases", "phrases"
   add_foreign_key "favorite_phrases", "users"
   add_foreign_key "favorite_users", "users"
   add_foreign_key "favorite_users", "users", column: "fav_user_id"
   add_foreign_key "phrases", "users"
+  add_foreign_key "theme_comments", "themes"
+  add_foreign_key "theme_comments", "users"
   add_foreign_key "themes", "users"
 end

@@ -1,6 +1,6 @@
 <% if current_user.liking_phrase?(phrase) %>
-  <%= link_to "good", favorite_phrases_path(phrase_id: phrase.id), method: :delete, remote: true, class: "btn btn-primary" %>
+  <%= link_to "good", favorite_phrases_path(phrase_id: phrase.id), method: :delete, remote: true, class: "btn btn-primary text-decoration-none" %>
 <% else %>
-  <%= link_to "good", favorite_phrases_path(phrase_id: phrase.id), method: :post, remote: true, class: "btn btn-outline-primary" %>
+  <%= link_to "good", favorite_phrases_path(phrase_id: phrase.id), method: :post, remote: true, class: "btn btn-outline-primary text-decoration-none" %>
 <% end%>
 (<%= phrase.likers.count %>)
