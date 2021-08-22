@@ -2,18 +2,21 @@
 
 <% if @value.present? %>
 
-<p class="mb-0">検索ワード：<%= @value %></p>
-<p>検索結果数：<%= @dates.count %></p>
-
 <% if @model == "user" %>
+<p class="mb-0">ユーザー検索ワード：<%= @value %></p>
+<p>検索結果数：<%= @dates.count %></p>
     <%= render "layouts/user_list", users: @dates %>
 <% end %>
 
 <% if @model == "phrase" %>
+<p class="mb-0">フレーズ検索ワード：<%= @value %></p>
+<p>検索結果数：<%= @dates.count %></p>
   <%= render "phrases/phrases", phrases: @dates %>
 <% end %>
 
 <% if @model == "theme" %>
+<p class="mb-0">テーマ検索ワード：<%= @value %></p>
+<p>検索結果数：<%= @dates.count %></p>
   <%= render "themes/themes", themes: @dates %>
 <% end %>
 <div class="mt-3">

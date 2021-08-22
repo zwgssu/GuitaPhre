@@ -8,32 +8,54 @@
 <p class="title mt-3 mb-3">人気のフレーズ</p>
 
 <div class="row">
-  <% @phrase.each do |phrase| %>
+  <% @phrases.first(4).each do |phrase| %>
     <div class="col-sm-6 mb-5">
       <div class="text-center">
-      <a class="text-dark" href=<%= phrase_path(phrase) %>><%= phrase.title %></a>
+      <%= fav_user_only_link?(phrase, phrase.title) %>
       
       <p class="text-muted"><%= phrase.created_at.strftime("%Y-%m-%d %H:%M") %></p>
       </div>
       <div class="d-flex justify-content-center mb-2">
-        <% if user_signed_in? %>
-          <%= audio_tag url_for(phrase.music_file), controls: true, controlslist: "nodownload" %>
-        <% else %>
-          favユーザー限定フレーズ
-        <% end %>
+        <%= fav_user_only?(phrase)%>
       </div>
-      <div class="d-flex justify-content-center">[投稿者]<%= link_to phrase.user.username, user_path(phrase.user) %></div>
+      <div class="d-flex justify-content-center">[投稿者]<%= link_to phrase.user.username, user_path(phrase.user), class: "me-1 text-dark" %> good(<%= phrase.likers.count %>)</div>
     </div>
   <% end %>
 </div>
 
-<%= link_to "もっと見る", phrases_path, class: "d-flex justify-content-end" %>
+<%= link_to "全てのフレーズを見る", phrases_path, class: "d-flex justify-content-end" %>
 <p class="title mt-3 mb-3">テーマ</p>
-テーマ・・・
-<%= link_to "もっと見る", root_path, class: "d-flex justify-content-end" %>
+
+<div class="row">
+  <% @themes.each do |theme| %>
+    <div class="col-sm-6 mb-5">
+      <div class="text-center">
+      <%= link_to theme.title, theme_path(theme) %>
+      
+      <p class="text-muted"><%= theme.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+      </div>
+      <div class="d-flex justify-content-center mb-2">
+        <%= audio_tag url_for(theme.music_file), controls: true, controlslist: "nodownload" %>
+      </div>
+      <div class="d-flex justify-content-center">[投稿者]<%= link_to theme.user.username, user_path(theme.user) %></div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "全てのテーマを見る", root_path, class: "d-flex justify-content-end" %>
 <p class="title mt-3 mb-3">タグ</p>
-タグ・・・
+    <% @random.each do |p| %>
+      <% if p.tag_1.present? %>
+        <%= link_to p.tag_1, search_path(search: {model: "phrase", value: p.tag_1}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none" %>
+      <% end %>
+      <% if p.tag_2.present? %>
+        <%= link_to p.tag_2, search_path(search: {model: "phrase", value: p.tag_2}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none" %>
+      <% end %>
+      <% if p.tag_3.present? %>
+        <%= link_to p.tag_3, search_path(search: {model: "phrase", value: p.tag_3}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none" %>
+      <% end %>
+    <% end %>
 <p class="title mt-3 mb-3">人気のユーザー</p>
 <%= render "layouts/user_list", users: @users%>
-<%= link_to "もっと見る", users_path, class: "d-flex justify-content-end" %>
+<%= link_to "全てのユーザーを見る", users_path, class: "d-flex justify-content-end" %>
 </div>
