@@ -1,6 +1,6 @@
 class PhrasesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :destroy]
   before_action :fav_only?, only: [:show]
   def index
     @phrases = Phrase.page(params[:page]).per(6).order('created_at DESC')
@@ -30,10 +30,11 @@ class PhrasesController < ApplicationController
   end
 
   def update
+    @phrase = Phrase.find(params[:id])
     if @phrase.update(phrase_params)
       redirect_to @phrase, notice: "フレーズを更新しました。"
     else
-      render "new"
+      render "edit"
     end
   end
 

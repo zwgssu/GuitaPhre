@@ -18,7 +18,7 @@
   </li>
 </ul>
 <div class="contaier border-start border-end border-bottom bg-white p-3">
-
+<% if @phrases.present? %>
   <% @phrases.each do |f| %>
     <div class="border-bottom">
       <div class="row pt-3 pb-3">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-9">
               <div class="mb-2">
-                <%= link_to f.user.username, user_path(f.user), class: "text-dark" %> <%= f.created_at.strftime("%Y-%m-%d %H:%M")%>
+                <%= link_to f.user.username, user_path(f.user), class: "text-dark" %> <%= f.created_at.strftime("%Y-%m-%d %H:%M")%> <%= image_tag "lock-fill.svg" if f.user_only? %>
               </div>
               <div class="pt-3 pb-3">
                 <h3><%= image_tag "guitar.svg", alt: "guitar", size: "28x28", class: "d-inline-block" %><%= link_to f.title, phrase_path(f), class: "text-dark d-inline-block p-3" %></h3>
@@ -47,14 +47,13 @@
           </div>
         </div>
         <div class="col-sm-4 d-flex align-items-center">
-        <% if user_signed_in? %>
           <%= audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload" %>
-        <% else %>
-          favユーザー限定フレーズ
-        <% end %>
         </div>
       </div>
     </div>
+  <% end %>
+  <% else %>
+  <p>自分のフレーズとfavしたユーザーのフレーズが表示されます。</p>
   <% end %>
 
 </div>
