@@ -43,6 +43,8 @@
   <div class="col-md-4">
     <p>SNSアカウントでサインイン</p>
     <%= link_to image_tag("google.png", alt: "google", class: "g-logo"), user_google_oauth2_omniauth_authorize_path, method: :post %>
+    <%= link_to image_tag("google.png", alt: "google", class: "g-logo"), user_twitter_omniauth_authorize_path, method: :post %>
+
   </div>
 
 </div>
