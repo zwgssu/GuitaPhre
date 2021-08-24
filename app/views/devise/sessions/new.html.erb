@@ -28,6 +28,6 @@
   </div>
   <div class="col-md-4">
     <p>SNSアカウントでログイン</p>
-    <%= link_to image_tag("google.png", alt: "google", class: "g-logo"), user_google_oauth2_omniauth_authorize_path, method: :post %>
-  </div>
+    <div class="mb-3"><%= link_to image_tag("google-logo.png", alt: "google", size: "30x30") + " googleアカウントでログイン", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-outline-dark text-decoration-none" %> </div>
+    <div class="mb-3"><%= link_to image_tag("twitter-logo.png", alt: "twitter", size: "35x30") + " Twitterアカウントでログイン", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn-outline-dark text-decoration-none" %> </div>  </div>
 </div>

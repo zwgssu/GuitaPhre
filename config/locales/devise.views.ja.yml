@@ -2,8 +2,37 @@ ja:
   activerecord:
     errors:
       models:
+        phrase:
+          attributes:
+            title:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            body:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            music_file:
+              invalid_music_type: "にはMP3,WAV,FLAC,OGG形式のファイルを指定してください。"
+        theme:
+          attributes:
+            overview:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            title:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            music_file:
+              invalid_music_type: "にはMP3,WAV,FLAC,OGG形式のファイルを指定してください。"
         user:
           attributes:
+            username:
+              too_long: "は%{count}文字以下に設定して下さい。"
+              blank: "が入力されていません。"
             email:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
@@ -33,18 +62,24 @@ ja:
               confirmation: "が内容とあっていません。"
             new_profile_picture:
               invalid_image_type: "にはJPEG,GIF,PNG形式の画像を指定してください。"
-            new_music_file:
-              invalid_music_type: "にはMP3,WAV形式のファイルを指定してください。"
+            
     attributes:
+      phrase:
+        title: "タイトル"
+        body: "投稿者コメント"
+        music_file: "音声ファイル"
+      theme:
+        title: "タイトル"
+        overview: "概要"
+        music_file: "音声ファイル"
       user:
         current_password: "現在のパスワード"
-        name: 名前
+        username: 名前
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
-    models:
-      user: "ユーザ"
+        new_profile_picture: "プロフィール画像"
   devise:
     confirmations:
       new:

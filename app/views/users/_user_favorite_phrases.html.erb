@@ -18,7 +18,7 @@
   </li>
 </ul>
 <div class="contaier border-start border-end border-bottom bg-white p-3">
-
+<% if @phrases.present? %>
   <% @phrases.each do |f| %>
   <div class="border-bottom">
     <div class="row pt-3 pb-3">
@@ -42,7 +42,7 @@
 
             </div>
             <div>
-              <%= fav_user_only_link?(f, "詳しく見る") %> good(<%= f.likers.count %>)
+              <%= fav_user_only_link?(f, "詳しく見る") %> good(<%= f.likers.count %>) コメント(<%= f.commented_by.count %>)
             </div>
           </div>
         </div>
@@ -55,6 +55,9 @@
     </div>
   </div>
   <% end %>
+<% else %>
+<p>goodしたフレーズはありません。</p>
+<% end %>
 
 
 </div>

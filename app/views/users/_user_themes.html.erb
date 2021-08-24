@@ -18,7 +18,7 @@
   </li>
 </ul>
 <div class="contaier border-start border-end border-bottom bg-white p-3">
-
+<% if @themes.present? %>
   <% @themes.each do |t| %>
     <div class="border-bottom">
       <div class="row pt-3 pb-3">
@@ -41,22 +41,20 @@
                 <%= link_to t.tag_3, search_path(search: {model: "theme", value: t.tag_3}), class: "text-dark" %>
               </div>
               <div>
-                <%= link_to "詳しく見る", theme_path(t), class: "text-dark" %>
+                <%= link_to "詳しく見る", theme_path(t), class: "text-dark" %> コメント(<%= t.theme_commented_by.count %>)
               </div>
             </div>
           </div>
         </div>
         <div class="col-sm-4 d-flex align-items-center">
-        <% if user_signed_in? %>
           <%= audio_tag url_for(t.music_file), controls: true, controlslist: "nodownload" %>
-        <% else %>
-          favユーザー限定フレーズ
-        <% end %>
         </div>
       </div>
     </div>
   <% end %>
-
+<% else %>
+<p>テーマはありません。</p>
+<% end %>
 </div>
 
 <div class="question-index">

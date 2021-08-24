@@ -1,7 +1,7 @@
 <%= form_for [@phrase, @comment], remote: true do |f| %>
   <div class="field">
     <div class="control">
-      <%= f.text_area :content, class:"input form-control", placeholder:"コメント", rows: 5 %>
+      <%= f.text_area :content, class:"input form-control", placeholder:"コメント(300字以内)", rows: 5 %>
       <%= f.hidden_field :phrase_id, value: @phrase.id %>
     </div>
   </div>

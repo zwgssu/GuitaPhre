@@ -9,7 +9,10 @@ class ApplicationRecord < ActiveRecord::Base
   }
 
   ALLOWED_MUSIC_TYPES = %q{
-    audio/mp3
-    audio/wav
+    audio/mpeg
+    audio/x-wav
+    audio/flac
+    audio/ogg
+    audio/vnd.wave
   }
 end

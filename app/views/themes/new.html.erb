@@ -3,10 +3,10 @@
 <h2><%= @page_title %></h2>
 
 <%= form_with(model: @theme) do |t| %>
-  <%= render "devise/shared/error_messages", resource: t.object %>
+  <%= render "layouts/error_messages", model: t.object %>
 
   <div class="field mt-3 mb-3">
-    <%= t.label :music_file, "音声ファイル(wav,mp3)" %>
+    <%= t.label :music_file, "音声ファイル(MP3,WAV,FLAC,OGG)" %>
     <div><%= t.file_field :music_file %></div>
   </div>
 
@@ -16,8 +16,8 @@
   </div>
 
   <div class="field mb-3">
-    <%= t.label :overview, "テーマ概要" %>
-    <%= t.text_area :overview, rows: 6, class: "form-control" %>
+    <%= t.label :overview, "概要" %>
+    <%= t.text_area :overview, rows: 6, placeholder:"コード進行や演奏時のポイントを書いてみましょう", class: "form-control" %>
   </div>
 
   <%= t.label :tag_1, "タグ(3つまで登録可能)" %>

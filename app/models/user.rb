@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable, :omniauthable, omniauth_providers: %i[twitter google_oauth2]
 
-  validates :username, length: { maximum: 50 }
+  validates :username, presence: true, length: { maximum: 50 }
   validates :introduction, length: { maximum: 200 }
   validate if: :new_profile_picture do
     if new_profile_picture.respond_to?(:content_type)

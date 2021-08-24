@@ -21,17 +21,13 @@
 
           </div>
           <div>
-            <%= link_to "詳しく見る", theme_path(t), class: "text-dark" %>
+            <%= link_to "詳しく見る", theme_path(t), class: "text-dark" %> コメント(<%= t.theme_commented_by.count %>)
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-4 d-flex align-items-center">
-    <% if user_signed_in? %>
       <%= audio_tag url_for(t.music_file), controls: true, controlslist: "nodownload" %>
-    <% else %>
-      favユーザー限定フレーズ
-    <% end %>
     </div>
   </div>
 </div>

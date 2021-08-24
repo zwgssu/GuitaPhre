@@ -3,7 +3,7 @@
 <h2><%= @page_title %></h2>
 
 <%= form_with(model: @phrase) do |f| %>
-  <%= render "devise/shared/error_messages", resource: f.object %>
+  <%= render "layouts/error_messages", model: f.object %>
 
     <div class="field mb-3">
       <%= audio_tag url_for(@phrase.music_file), controls: true, controlslist: "nodownload" %>

@@ -21,12 +21,12 @@
 
           </div>
           <div>
-            <%= fav_user_only_link?(f, "詳しく見る") %> good(<%= f.likers.count %>)
+            <%= fav_user_only_link?(f, "詳しく見る") %> good(<%= f.likers.count %>) コメント(<%= f.commented_by.count %>)
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-4 d-flex align-items-center">
+    <div class="col-md-4 d-flex align-items-center">
 
       <%= fav_user_only?(f)%>
 

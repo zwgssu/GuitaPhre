@@ -41,7 +41,7 @@
                 <%= link_to f.tag_3, search_path(search: {model: "phrase", value: f.tag_3}), class: "text-dark" %>
               </div>
               <div>
-                <%= link_to "詳しく見る", phrase_path(f), class: "text-dark" %> good(<%= f.likers.count %>)
+                <%= link_to "詳しく見る", phrase_path(f), class: "text-dark" %> good(<%= f.likers.count %>) コメント(<%= f.commented_by.count %>)
               </div>
             </div>
           </div>

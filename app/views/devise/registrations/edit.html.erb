@@ -1,10 +1,10 @@
 <h2>プロフィール編集</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "layouts/error_messages", model: f.object %>
 
   <div class="field mt-3 mb-3">
-    <%= f.label :new_profile_picture, "プロフィール画像" %>
+    <%= f.label :new_profile_picture, "プロフィール画像(JPEG,GIF,PNG)" %>
     <div><%= f.file_field :new_profile_picture %></div>
     <% if current_user.profile_picture.attached? %>
       <div>

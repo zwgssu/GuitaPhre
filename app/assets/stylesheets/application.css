@@ -147,3 +147,8 @@ a:link {
   background-color: red;
   text-align: center;
 }
+
+div.field_with_errors {
+  background-color: #fcc;
+  padding: 2px;
+}
