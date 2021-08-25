@@ -51,5 +51,6 @@ test:
 production:
   <<: *default
   database: GuitaPhre_production
-  username: GuitaPhre
+  username: root
   password: <%= ENV['GUITAPHRE_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
