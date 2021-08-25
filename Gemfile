@@ -56,3 +56,7 @@ gem 'audiojs-rails'
 gem 'activestorage-validator'
 gem 'omniauth'
 gem 'aws-sdk-s3'
+
+group :production do
+  gem 'unicorn'
+end
