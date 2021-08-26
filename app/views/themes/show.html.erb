@@ -26,11 +26,15 @@
     <div class="d-flex justify-content-start mb-2"><h5><u>概要</u></h5></div>
       <div class="mb-3 p-2"><%= convert_url_into_a_tag(h(simple_format(@theme.overview))).html_safe %></div>
       <div class="p-2">
-        <%= image_tag "tag.svg" %>
+        <%= image_pack_tag "tag.svg" %>
           <%= link_to @theme.tag_1, search_path(search: {model: "theme", value: @theme.tag_1}), class: "text-dark" %>
           <%= link_to @theme.tag_2, search_path(search: {model: "theme", value: @theme.tag_2}), class: "text-dark" %>
           <%= link_to @theme.tag_3, search_path(search: {model: "theme", value: @theme.tag_3}), class: "text-dark" %>
       </div>
+      <% if current_user == @theme.user %>
+        <%= link_to image_pack_tag("pencil-square.svg", alt: "edit"), edit_theme_path(@phrase), class: "me-2" %>
+        <%= link_to image_pack_tag("trash.svg", alt: "delete"), @theme, method: :delete, data: { confirm: "テーマを削除しますか？" }, class: "me-2" %>
+      <% end %>
   </div>
 
   <div class="rounded bg-white p-3 mb-4">

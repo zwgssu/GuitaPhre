@@ -7,12 +7,22 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "bootstrap"
-import "../stylesheets/application"
+import "../stylesheets/style"
 
 require("jquery")
 
 import '../stylesheets/application.css'
 const images = require.context('../images/', true)
+
+const webpack = require('webpack')
+environment.plugins.prepend(
+  'Provide',
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    Popper: 'popper.js'
+  })
+)
 
 //= require audiojs
 
