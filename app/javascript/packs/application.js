@@ -7,11 +7,11 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "bootstrap"
-import "../stylesheets/style"
+import "../stylesheets/application"
+import "packs/application.css";
 
 require("jquery")
 
-import '../stylesheets/application.css'
 const images = require.context('../images/', true)
 
 const webpack = require('webpack')
