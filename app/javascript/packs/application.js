@@ -11,6 +11,9 @@ import "../stylesheets/application"
 
 require("jquery")
 
+import '../stylesheets/application.css'
+const images = require.context('../images/', true)
+
 //= require audiojs
 
 Rails.start()

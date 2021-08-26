@@ -8,7 +8,7 @@
     <div><%= f.file_field :new_profile_picture %></div>
     <% if current_user.profile_picture.attached? %>
       <div>
-        <%= image_tag current_user.profile_picture.variant(resize: "128x128") %>
+        <%= image_pack_tag current_user.profile_picture.variant(resize: "128x128") %>
         <%= f.check_box :remove_profile_picture %>
         <%= f.label :remove_profile_picture, "画像を削除" %>
       </div>
