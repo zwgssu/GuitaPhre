@@ -1,7 +1,7 @@
 module ApplicationHelper
   def cheak_use_picture(user, size)
     if user.profile_picture.attached?
-      link_to (image_pack_tag user.profile_picture, size: size, alt: "icon", class: "img-fluid rounded-circle"), user_path(user)
+      link_to (image_tag user.profile_picture, size: size, alt: "icon", class: "img-fluid rounded-circle"), user_path(user)
     else
       link_to (image_pack_tag "20227.jpg", alt: "icon", size: size, class: "img-fluid rounded-circle"), user_path(user)
     end
