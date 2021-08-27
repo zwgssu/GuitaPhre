@@ -13,8 +13,6 @@ import '../stylesheets/application';
 
 require("jquery")
 
-import "packs/application.css";
-
 const images = require.context('../images/', true)
 
 //= require audiojs
