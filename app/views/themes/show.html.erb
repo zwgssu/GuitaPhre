@@ -32,7 +32,7 @@
           <%= link_to @theme.tag_3, search_path(search: {model: "theme", value: @theme.tag_3}), class: "text-dark" %>
       </div>
       <% if current_user == @theme.user %>
-        <%= link_to image_pack_tag("pencil-square.svg", alt: "edit"), edit_theme_path(@phrase), class: "me-2" %>
+        <%= link_to image_pack_tag("pencil-square.svg", alt: "edit"), edit_theme_path(@theme), class: "me-2" %>
         <%= link_to image_pack_tag("trash.svg", alt: "delete"), @theme, method: :delete, data: { confirm: "テーマを削除しますか？" }, class: "me-2" %>
       <% end %>
   </div>

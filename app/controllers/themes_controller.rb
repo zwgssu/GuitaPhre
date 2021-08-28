@@ -29,7 +29,7 @@ class ThemesController < ApplicationController
 
   def update
     if @theme.update(theme_params)
-      redirect_to @theme, notice: "フレーズを更新しました。"
+      redirect_to @theme, notice: "テーマを更新しました。"
     else
       render "new"
     end
@@ -37,7 +37,7 @@ class ThemesController < ApplicationController
 
   def destroy
     @theme.destroy
-    redirect_to user_path(current_user), notice: "フレーズを削除しました。"
+    redirect_to user_path(current_user), notice: "テーマを削除しました。"
   end
 
   private

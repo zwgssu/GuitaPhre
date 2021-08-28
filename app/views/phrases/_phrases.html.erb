@@ -8,7 +8,7 @@
         </div>
         <div class="col-9">
           <div class="mb-2">
-            <%= link_to f.user.username, user_path(f.user), class: "text-dark" %> <%= f.created_at.strftime("%Y-%m-%d %H:%M")%> <%= image_tag "lock-fill.svg" if f.user_only? %>
+            <h6 class="d-inline-block"><%= link_to f.user.username, user_path(f.user), class: "text-dark" %></h6> <%= f.created_at.strftime("%Y-%m-%d %H:%M")%> <%= image_tag "lock-fill.svg" if f.user_only? %>
           </div>
           <div class="pt-3 pb-3">
             <h3><%= image_tag "guitar.svg", alt: "guitar", size: "28x28", class: "d-inline-block" %><%= fav_user_only_link?(f, f.title) %></h3>
