@@ -13,11 +13,17 @@
  *= require_tree .
  *= require_self
  */
+#body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
  .footer {
+  margin-top: auto;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 70px;
+  height: 80px;
   background-color: #696969;
 }
 .title {
@@ -132,12 +138,12 @@ a:link {
   }
   
 .notice {
-  background-color: green;
+  background-color: #afeeee;
   text-align: center;
 }
 
 .alert {
-  background-color: red;
+  background-color: #fcc;
   text-align: center;
 }
 

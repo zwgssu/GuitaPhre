@@ -14,16 +14,18 @@
   </head>
 
   <body class="mozi" style="background-color:whitesmoke;">
-  <% if notice %>
-  <p class="notice mb-0 text-white"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-  <p class="alert mb-0 text-white"><%= alert %></p>
-  <% end %>
-    <%= render "layouts/header" %>
-    <div class="container mt-4" style="max-width: 1050px; min-width: 240px;">
-    <%= yield %>
+  <div id="body">
+    <% if notice %>
+    <p class="notice mb-0"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+    <p class="alert mb-0 text-white"><%= alert %></p>
+    <% end %>
+      <%= render "layouts/header" %>
+      <div class="container mt-4" style="max-width: 1050px; min-width: 240px;">
+      <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
     </div>
-    <%= render "layouts/footer" %>
   </body>
 </html>
