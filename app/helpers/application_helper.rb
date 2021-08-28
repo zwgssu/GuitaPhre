@@ -3,7 +3,7 @@ module ApplicationHelper
     if user.profile_picture.attached?
       link_to (image_tag user.profile_picture.variant(gravity: :center, resize:"640x640^", crop:"640x640+0+0").processed, size: size, alt: "icon", class: "img-fluid rounded-circle"), user_path(user)
     else
-      link_to (image_tag "20227.jpg", alt: "icon", size: size, class: "img-fluid rounded-circle"), user_path(user)
+      link_to (image_pack_tag "20227.jpg", alt: "icon", size: size, class: "img-fluid rounded-circle"), user_path(user)
     end
   end
 
