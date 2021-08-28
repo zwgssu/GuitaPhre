@@ -11,7 +11,7 @@
             <%= link_to t.user.username, user_path(t.user), class: "text-dark" %> <%= t.created_at.strftime("%Y-%m-%d %H:%M")%>
           </div>
           <div class="pt-3 pb-3">
-            <h3><%= image_tag "music.svg", alt: "guitar", size: "28x28", class: "d-inline-block" %><%= link_to t.title, theme_path(t), class: "text-dark d-inline-block p-3" %></h3>
+            <h3><%= image_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block" %><%= link_to t.title, theme_path(t), class: "text-dark d-inline-block p-3" %></h3>
           </div>
           <div>
           <%= image_tag "tag.svg" %>

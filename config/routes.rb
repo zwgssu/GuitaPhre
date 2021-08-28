@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   
   root 'top#index'
-  get "/atfirst" => "atfirst#atfrist"
+  get "/atfirst" => "atfirst#atfirst"
 
   resources :users, only: [:index, :show] do
     member do
