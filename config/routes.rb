@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   
   root 'top#index'
+  get "/atfirst" => "atfirst#atfrist"
 
   resources :users, only: [:index, :show] do
     member do
@@ -30,4 +31,9 @@ Rails.application.routes.draw do
   resource :favorite_phrases, only: [:create, :destroy]
 
   get '/search' => 'search#search'
+
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
 end

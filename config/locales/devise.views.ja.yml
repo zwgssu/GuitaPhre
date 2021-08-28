@@ -2,6 +2,23 @@ ja:
   activerecord:
     errors:
       models:
+        contact:
+          attributes:
+            email:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            name:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            message:
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
         phrase:
           attributes:
             title:
@@ -64,6 +81,10 @@ ja:
               invalid_image_type: "にはJPEG,GIF,PNG形式の画像を指定してください。"
             
     attributes:
+      contact:
+        email: "メールアドレス"
+        name: "お名前"
+        message: "メッセージ"
       phrase:
         title: "タイトル"
         body: "投稿者コメント"

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_070714) do
+ActiveRecord::Schema.define(version: 2021_08_28_055749) do
 
-  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_070714) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb3", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2021_08_22_070714) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "comments", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "phrase_id", null: false
     t.string "content"
@@ -50,7 +50,15 @@ ActiveRecord::Schema.define(version: 2021_08_22_070714) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "favorite_phrases", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "contacts", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.text "message", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorite_phrases", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "phrase_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -59,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_070714) do
     t.index ["user_id"], name: "index_favorite_phrases_on_user_id"
   end
 
-  create_table "favorite_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "favorite_users", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "fav_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -69,7 +77,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_070714) do
     t.index ["user_id"], name: "index_favorite_users_on_user_id"
   end
 
-  create_table "phrases", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "phrases", charset: "utf8mb3", force: :cascade do |t|
     t.string "title", null: false
     t.string "body", null: false
     t.string "tag_1"
@@ -83,7 +91,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_070714) do
     t.index ["user_id"], name: "index_phrases_on_user_id"
   end
 
-  create_table "theme_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "theme_comments", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "theme_id", null: false
     t.string "content"
@@ -93,7 +101,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_070714) do
     t.index ["user_id"], name: "index_theme_comments_on_user_id"
   end
 
-  create_table "themes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "themes", charset: "utf8mb3", force: :cascade do |t|
     t.string "title", null: false
     t.string "overview", null: false
     t.string "tag_1"
@@ -105,7 +113,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_070714) do
     t.index ["user_id"], name: "index_themes_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

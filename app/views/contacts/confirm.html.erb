@@ -1,0 +1,29 @@
+<% @page_title = "送信内容確認" %>
+
+<h2><%= @page_title %></h2>
+
+
+      <div class="container bg-white mb-3 p-3">
+      お名前：
+      <div class="mb-3"><%= @contact.name %></div>
+
+      メールアドレス:
+      <div class="mb-3"><%= @contact.email %></div>
+
+      メッセージ：
+      <div><%= @contact.message %></div>
+      </div>
+
+
+<%= form_for(@contact) do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :message %>
+  <div><%= f.submit '送信', class: "btn btn-primary mb-2" %></div>
+<% end %>
+<%= form_for @contact, url: back_path do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :message %>
+  <div><%= f.submit '入力画面に戻る', class: "btn btn-success" %></div>
+<% end %>
