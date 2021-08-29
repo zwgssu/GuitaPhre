@@ -59,7 +59,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'http://guitar-phrase.com/'}
+  config.action_mailer.default_url_options = { host: 'http://35.74.172.193/'}
 
   config.action_mailer.perform_deliveries = true
 
