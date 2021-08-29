@@ -309,7 +309,7 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
   config.omniauth :google_oauth2, Rails.application.credentials.google[:api_key], Rails.application.credentials.google[:api_secret]
-  config.omniauth :twitter, Rails.application.credentials.twitter[:api_key], Rails.application.credentials.twitter[:api_secret], oauth_callback: "http://35.74.172.193/users/auth/twitter/callback"
+  config.omniauth :twitter, Rails.application.credentials.twitter[:api_key], Rails.application.credentials.twitter[:api_secret], oauth_callback: "http://guitar-phrase.com/users/auth/twitter/callback"
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
 
 end
