@@ -5,4 +5,4 @@
   <%= link_to "fav!", favorite_users_path(fav_user_id: user.id), method: :post, remote: true, class: "btn btn-outline-info mb-2 text-decoration-none" %>
 <% end%>
 <% end %>
-<div>Fav!されている数(<%= user.likers.count %>)</div>
+<br>Fav!されている数(<%= user.likers.count %>)

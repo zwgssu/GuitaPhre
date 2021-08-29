@@ -26,7 +26,7 @@
     <div class="d-flex justify-content-start mb-2"><h5><u>概要</u></h5></div>
       <div class="mb-3 p-2"><%= convert_url_into_a_tag(h(simple_format(@theme.overview))).html_safe %></div>
       <div class="p-2">
-        <%= image_pack_tag "tag.svg" %>
+        <%= image_pack_tag "tag.svg", alt: "tag" %>
           <%= link_to @theme.tag_1, search_path(search: {model: "theme", value: @theme.tag_1}), class: "text-dark" %>
           <%= link_to @theme.tag_2, search_path(search: {model: "theme", value: @theme.tag_2}), class: "text-dark" %>
           <%= link_to @theme.tag_3, search_path(search: {model: "theme", value: @theme.tag_3}), class: "text-dark" %>

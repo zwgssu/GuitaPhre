@@ -6,7 +6,7 @@
             <%= cheak_use_picture(user, "64x64") %>
           </div>
           <div class="col-9">
-            <%= link_to user.username, user_path(user) %><br>
+            <%= link_to user.username, user_path(user) %>　fav(<%= user.likers.count %>)<br>
             <% if user.introduction.present? %>
               <%= truncate(user.introduction, length: 40) %>
             <% else %>

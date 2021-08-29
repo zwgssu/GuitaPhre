@@ -5,7 +5,7 @@
 </div>
 <% end %>
 
-<p class="title mt-3 mb-3">人気のフレーズ</p>
+<p class="title mt-3 mb-3"><%= image_tag "guitar.svg", alt: "guitar", size: "28x28", class: "d-inline-block me-1" %>人気のフレーズ</p>
 
 <div class="row">
   <% @phrases.first(4).each do |phrase| %>
@@ -24,7 +24,7 @@
 </div>
 
 <%= link_to "全てのフレーズを見る", phrases_path, class: "d-flex justify-content-end" %>
-<p class="title mt-3 mb-3">テーマ</p>
+<p class="title mt-3 mb-3"><%= image_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block me-1" %>テーマ</p>
 
 <div class="row">
   <% @themes.each do |theme| %>
@@ -43,19 +43,15 @@
 </div>
 
 <%= link_to "全てのテーマを見る", themes_path, class: "d-flex justify-content-end" %>
-<p class="title mt-3 mb-3">タグ</p>
-    <% @random.each do |p| %>
-      <% if p.tag_1.present? %>
-        <%= link_to p.tag_1, search_path(search: {model: "phrase", value: p.tag_1}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none" %>
-      <% end %>
-      <% if p.tag_2.present? %>
-        <%= link_to p.tag_2, search_path(search: {model: "phrase", value: p.tag_2}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none" %>
-      <% end %>
-      <% if p.tag_3.present? %>
-        <%= link_to p.tag_3, search_path(search: {model: "phrase", value: p.tag_3}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none" %>
+<p class="title mt-3 mb-3"><%= image_tag "tag.svg", alt: "tag", size: "28x28", class: "d-inline-block me-1" %>タグ</p>
+    <div class="p-2">
+    <% @tag.each do |t| %>
+      <% if t.present? %>
+        <%= link_to t, search_path(search: {model: "phrase", value: t}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none" %>
       <% end %>
     <% end %>
-<p class="title mt-3 mb-3">人気のユーザー</p>
+    </div>
+<p class="title mt-3 mb-3"><%= image_tag "people-fill.svg", alt: "users", size: "28x28", class: "d-inline-block me-1" %>人気のユーザー</p>
 <%= render "layouts/user_list", users: @users%>
 <%= link_to "全てのユーザーを見る", users_path, class: "d-flex justify-content-end" %>
 </div>

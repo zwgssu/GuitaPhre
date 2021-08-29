@@ -1,8 +1,9 @@
 class TopController < ApplicationController
   def index
-    @users = User.limit(6).order('created_at DESC')
+    @users = User.includes(:likers).sort {|a,b| b.likers.size <=> a.likers.size}
     @phrases = Phrase.includes(:likers).sort {|a,b| b.likers.size <=> a.likers.size}
     @themes = Theme.limit(4).order("created_at DESC")
     @random = Phrase.order("RAND()")
+    @tag = Phrase.pluck(:tag_1, :tag_2, :tag_3).flatten.uniq
   end
 end

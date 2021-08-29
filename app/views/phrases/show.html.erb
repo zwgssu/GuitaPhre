@@ -38,7 +38,7 @@
       
 
       <div class="p-2">
-        <%= image_tag "tag.svg" %>
+        <%= image_tag "tag.svg", alt: "tag" %>
           <%= link_to @phrase.tag_1, search_path(search: {model: "phrase", value: @phrase.tag_1}), class: "text-dark" %>
           <%= link_to @phrase.tag_2, search_path(search: {model: "phrase", value: @phrase.tag_2}), class: "text-dark" %>
           <%= link_to @phrase.tag_3, search_path(search: {model: "phrase", value: @phrase.tag_3}), class: "text-dark" %>
