@@ -11,7 +11,7 @@
 <div class="rounded bg-white p-3 mb-4">
 <div class="d-flex justify-content-start mb-2"><h5><u>テーマ</u></h5></div>
   <div class="d-flex justify-content-center mb-2">
-    <%= audio_pack_tag url_for(@theme.music_file), controls: true, controlslist: "nodownload" %>
+    <%= audio_tag url_for(@theme.music_file), controls: true, controlslist: "nodownload" %>
   </div>
   <div class="d-flex justify-content-center">
     <% unless user_signed_in? %>
