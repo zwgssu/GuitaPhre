@@ -18,7 +18,7 @@ class Phrase < ApplicationRecord
     validates :tag_3
   end
 
-  
+  #音声ファイルが空じゃないかと、ファイルの拡張子をチェックする
   def music_file_presence
     if music_file.attached?
       unless music_file.content_type.in?(ALLOWED_MUSIC_TYPES)

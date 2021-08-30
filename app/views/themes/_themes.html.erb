@@ -11,10 +11,10 @@
             <h6 class="d-inline-block"><%= link_to t.user.username, user_path(t.user), class: "text-dark" %></h6> <%= t.created_at.strftime("%Y-%m-%d %H:%M")%>
           </div>
           <div class="pt-3 pb-3">
-            <h3><%= image_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block" %><%= link_to t.title, theme_path(t), class: "text-dark d-inline-block p-3" %></h3>
+            <h3><%= image_pack_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block" %><%= link_to t.title, theme_path(t), class: "text-dark d-inline-block p-3" %></h3>
           </div>
           <div>
-          <%= image_tag "tag.svg", alt: "tag" %>
+          <%= image_pack_tag "tag.svg", alt: "tag" %>
             <%= link_to t.tag_1, search_path(search: {model: "theme", value: t.tag_1}), class: "text-dark" %>
             <%= link_to t.tag_2, search_path(search: {model: "theme", value: t.tag_2}), class: "text-dark" %>
             <%= link_to t.tag_3, search_path(search: {model: "theme", value: t.tag_3}), class: "text-dark" %>

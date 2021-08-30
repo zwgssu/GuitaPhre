@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-between">
     <div class="col-md-5 text-nowrap">
-      <div class="d-inline-block"><a href="/"><%= image_tag "logo.png", alt: "main-logo" %></a></div>
+      <div class="d-inline-block"><a href="/"><%= image_pack_tag "logo.png", alt: "main-logo" %></a></div>
       <div class="d-inline-block">
         <%= form_with url:search_path, method: :get, local: true do |f| %>
         <div class="input-group">

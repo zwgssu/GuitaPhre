@@ -2,11 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #devise使用時のストロングパラメーター追加時の記述
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:new_profile_picture, :username])
     devise_parameter_sanitizer.permit(:account_update, keys: [:new_profile_picture, :introduction, :username, :remove_profile_picture])
   end
 
+  #例外処理ここから
   class Forbidden < StandardError; end
 
   if Rails.env.production? || ENV["RESCUE_EXCEPTIONS"]
@@ -29,5 +31,6 @@ class ApplicationController < ActionController::Base
   private def rescue_internal_server_error(exception)
     render "errors/internal_server_error", status: 500, layout: "error", formats: [:html]
   end
+  #例外処理ここまで
 
 end

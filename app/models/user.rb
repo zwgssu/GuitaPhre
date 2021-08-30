@@ -28,6 +28,7 @@ class User < ApplicationRecord
   attribute :new_profile_picture
   attribute :remove_profile_picture, :boolean
 
+  #プロフィール編集でパスワード入力なしで編集完了ができるようにする
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 
@@ -41,6 +42,7 @@ class User < ApplicationRecord
     result
   end
 
+  #SNS認証でログインした場合、ユーザー情報を登録する
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.username = auth.info.name
@@ -61,6 +63,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :theme_comments, dependent: :destroy
 
+  #fav関連
   def favorite_user(other_user)
     unless self == other_user
       self.favorite_users.find_or_create_by(fav_user_id: other_user.id)
@@ -81,6 +84,7 @@ class User < ApplicationRecord
     fav.destroy if fav
   end
 
+  #favしているかの確認
   def liking_user?(other)
     self.liking_users.include?(other)
   end
@@ -89,6 +93,7 @@ class User < ApplicationRecord
     self.liking_phrases.include?(other)
   end
 
+  #マイページ用　自分のフレーズとfavユーザーのフレーズをまとめる
   def feed_phrases
     Phrase.where(user_id: self.liking_user_ids + [self.id])
   end

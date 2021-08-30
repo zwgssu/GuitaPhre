@@ -34,6 +34,7 @@ module GuitaPhre
     config.generators.system_tests = nil
     config.i18n.default_locale = :ja
 
+    #ルーティングの例外処理
     config.exception_app = ->(env) do
       ErrorsController.action(:show).call(env)
     end

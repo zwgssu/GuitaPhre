@@ -1,6 +1,7 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
+  #アップロード可能な拡張子をまとめる
   ALLOWED_CONTENT_TYPES = %q{
     image/jpeg
     image/png

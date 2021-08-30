@@ -6,7 +6,7 @@
 </div>
 <% end %>
 
-<p class="title mt-3 mb-3"><%= image_tag "guitar.svg", alt: "guitar", size: "28x28", class: "d-inline-block me-1" %>人気のフレーズ</p>
+<p class="title mt-3 mb-3"><%= image_pack_tag "guitar.svg", alt: "guitar", size: "28x28", class: "d-inline-block me-1" %>人気のフレーズ</p>
 
 <div class="row">
   <% @phrases.first(4).each do |phrase| %>
@@ -25,7 +25,7 @@
 </div>
 
 <%= link_to "全てのフレーズを見る", phrases_path, class: "d-flex justify-content-end" %>
-<p class="title mt-3 mb-3"><%= image_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block me-1" %>テーマ</p>
+<p class="title mt-3 mb-3"><%= image_pack_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block me-1" %>テーマ</p>
 
 <div class="row">
   <% @themes.each do |theme| %>
@@ -44,7 +44,7 @@
 </div>
 
 <%= link_to "全てのテーマを見る", themes_path, class: "d-flex justify-content-end" %>
-<p class="title mt-3 mb-3"><%= image_tag "tag.svg", alt: "tag", size: "28x28", class: "d-inline-block me-1" %>タグ</p>
+<p class="title mt-3 mb-3"><%= image_pack_tag "tag.svg", alt: "tag", size: "28x28", class: "d-inline-block me-1" %>タグ</p>
     <div class="p-2">
     <% @tag.each do |t| %>
       <% if t.present? %>
@@ -52,7 +52,7 @@
       <% end %>
     <% end %>
     </div>
-<p class="title mt-3 mb-3"><%= image_tag "people-fill.svg", alt: "users", size: "28x28", class: "d-inline-block me-1" %>人気のユーザー</p>
+<p class="title mt-3 mb-3"><%= image_pack_tag "people-fill.svg", alt: "users", size: "28x28", class: "d-inline-block me-1" %>人気のユーザー</p>
 <%= render "layouts/user_list", users: @users%>
 <%= link_to "全てのユーザーを見る", users_path, class: "d-flex justify-content-end" %>
 </div>

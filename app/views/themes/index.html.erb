@@ -1,7 +1,7 @@
 <% @page_title = "テーマ一覧" %>
 
 <div class="bg-white p-3">
-  <h2 class="text-center"><%= image_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block" %><%= @page_title %><%= image_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block" %></h2>
+  <h2 class="text-center"><%= image_pack_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block" %><%= @page_title %><%= image_pack_tag "music.svg", alt: "music", size: "28x28", class: "d-inline-block" %></h2>
   
   <%= render "themes", themes: @themes %>
   <div class="mt-3">

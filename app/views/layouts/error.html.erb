@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <meta name="viewport" content="width=1050px, initial-scale=1, minimum-scale=1, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
     <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -22,7 +22,10 @@
     <p class="alert mb-0 text-white"><%= alert %></p>
     <% end %>
       <%= render "layouts/header" %>
-      <div class="container mt-4" style="max-width: 1050px; min-width: 240px;">
+      <div class="container" style="max-width: 1050px; min-width: 240px;">
+      <div class="mt-2 mb-2">
+      <%= render "layouts/header_search_form" %>
+      </div>
       <%= yield %>
       </div>
       <%= render "layouts/footer" %>
