@@ -48,7 +48,7 @@
     <div class="p-2">
     <% @tag.each do |t| %>
       <% if t.present? %>
-        <%= link_to t, search_path(search: {model: "phrase", value: t}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none" %>
+        <%= link_to t, search_path(search: {model: "phrase", value: t}), class: "d-inline-block btn btn-secondary btn-sm text-white text-decoration-none m-1" %>
       <% end %>
     <% end %>
     </div>
