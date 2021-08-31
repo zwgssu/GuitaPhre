@@ -11,7 +11,7 @@ http://guitar-phrase.com/<br>
 # 使用技術
 * Ruby 3.0.2
 * Ruby on Rails 6.1.4
- * ActiveStorage
+  * ActiveStorage
 * MariaDB
 * AWS
   * EC2
