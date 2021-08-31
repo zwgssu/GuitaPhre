@@ -1,0 +1,11 @@
+<% @page_title = "フレーズ管理" %>
+<div class="container bg-white p-3">
+<h3 class="mb-3">フレーズ管理</h3>
+<ul>
+  <% @phrases.each do |p| %>
+    <li>id:<%= link_to p.id, admin_phrase_path(p), target: :_blank, rel: "noopener noreferrer" %> - <%= p.title %> - by<%= link_to p.user.username, user_path(p.user) %> - <%= link_to "削除", admin_phrase_path(p), method: :delete, data: { confirm: "このフレーズを削除しますか？" } %></li>
+  <% end %>
+</ul>
+<%= link_to "Back", :admin_root %>
+
+</div>

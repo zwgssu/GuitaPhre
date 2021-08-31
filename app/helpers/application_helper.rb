@@ -35,9 +35,8 @@ module ApplicationHelper
   end
 
   def fav_user_only?(f)
-    if user_signed_in?
       if member_only?(f)
-        if current_user == f.user || current_user.liking_user?(f.user)
+        if user_signed_in? && current_user == f.user || current_user&.liking_user?(f.user)
           audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"
         else
           "favユーザー限定フレーズ"
@@ -45,19 +44,11 @@ module ApplicationHelper
       else
         audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"
       end
-    else
-      if member_only?(f)
-        "favユーザー限定フレーズ"
-      else
-        audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"
-      end
-    end
   end
 
   def fav_user_only_link?(f, str)
-    if user_signed_in?
       if member_only?(f)
-        if current_user == f.user || current_user.liking_user?(f.user)
+        if user_signed_in? && current_user == f.user || current_user&.liking_user?(f.user)
           link_to str, phrase_path(f), class: "text-dark"
         else
           str
@@ -65,13 +56,6 @@ module ApplicationHelper
       else
         link_to str, phrase_path(f), class: "text-dark"
       end
-    else
-      if member_only?(f)
-        str
-      else
-        link_to str, phrase_path(f), class: "text-dark"
-      end
-    end
   end
   
 

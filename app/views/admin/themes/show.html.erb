@@ -1,0 +1,14 @@
+<% @page_title = "テーマ管理" %>
+<div class="container bg-white p-3">
+<h3 class="mb-3">テーマ管理</h3>
+<p><%= link_to @theme.user.username, user_path(@theme.user) %>　の投稿</p>
+<p>title: <%= @theme.title %></p>
+<div>
+<%= audio_tag url_for(@theme.music_file), controls: true %>
+</div>
+<p>body:</p>
+<p><%= convert_url_into_a_tag(h(simple_format(@theme.overview))).html_safe %></p>
+<br>
+<%= link_to "削除", admin_theme_path(@theme), method: :delete, data: { confirm: "このテーマを削除しますか？" } %>
+
+</div>

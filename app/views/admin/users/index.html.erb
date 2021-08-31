@@ -1,0 +1,11 @@
+<% @page_title = "ユーザー管理" %>
+<div class="container bg-white p-3">
+<h3 class="mb-3">ユーザー管理</h3>
+<ul>
+  <% @users.each do |u| %>
+    <li>id:<%= link_to u.id, user_path(u), target: :_blank, rel: "noopener noreferrer" %> - <%= u.username %> - <%= link_to "退会", admin_user_path(u), method: :delete, data: { confirm: "このユーザーを退会させますか？" } %></li>
+  <% end %>
+</ul>
+<%= link_to "Back", :admin_root %>
+
+</div>

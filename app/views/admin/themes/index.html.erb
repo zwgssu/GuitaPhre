@@ -1,0 +1,11 @@
+<% @page_title = "テーマ管理" %>
+<div class="container bg-white p-3">
+<h3 class="mb-3">テーマ管理</h3>
+<ul>
+  <% @themes.each do |t| %>
+    <li>id:<%= link_to t.id, admin_theme_path(t), target: :_blank, rel: "noopener noreferrer" %> - <%= t.title %> - by<%= link_to t.user.username, user_path(t.user) %> - <%= link_to "削除", admin_theme_path(t), method: :delete, data: { confirm: "このフレーズを削除しますか？" } %></li>
+  <% end %>
+</ul>
+<%= link_to "Back", :admin_root %>
+
+</div>

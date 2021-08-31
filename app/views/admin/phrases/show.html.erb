@@ -1,0 +1,14 @@
+<% @page_title = "フレーズ管理" %>
+<div class="container bg-white p-3">
+<h3 class="mb-3">フレーズ管理</h3>
+<p><%= link_to @phrase.user.username, user_path(@phrase.user) %>　の投稿</p>
+<p>title: <%= @phrase.title %></p>
+<div>
+<%= audio_tag url_for(@phrase.music_file), controls: true %>
+</div>
+<p>body:</p>
+<p><%= convert_url_into_a_tag(h(simple_format(@phrase.body))).html_safe %></p>
+<br>
+<%= link_to "削除", admin_phrase_path(@phrase), method: :delete, data: { confirm: "このフレーズを削除しますか？" } %>
+
+</div>

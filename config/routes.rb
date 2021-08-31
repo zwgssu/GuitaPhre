@@ -36,4 +36,11 @@ Rails.application.routes.draw do
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'done', to: 'contacts#done', as: 'done'
+
+  namespace :admin do
+    root "top#index"
+    resources :users, only: [:index, :destroy]
+    resources :phrases, only: [:index, :show, :destroy]
+    resources :themes, only: [:index, :show, :destroy]
+  end
 end
