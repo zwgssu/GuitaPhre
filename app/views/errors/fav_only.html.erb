@@ -1,0 +1,5 @@
+<% @page_title = "Fav Only Phrase" %>
+<div class="bg-white p-2">
+<h2 class="mb-2">Favユーザー限定フレーズです。</h2>
+<p>フレーズを聴くには<%= link_to @phrase.user.username, user_path(@phrase.user) %>さんをFavしましょう。</p>
+</div>

@@ -7,7 +7,6 @@ class PhrasesController < ApplicationController
   end
 
   def show
-    @phrase = Phrase.find(params[:id])
     @comment = Comment.new
     @comments = @phrase.comments.all.order("created_at DESC")
   end
@@ -72,11 +71,11 @@ class PhrasesController < ApplicationController
         unless current_user == @phrase.user
           if current_user.liking_user?(@phrase.user)
             else
-              redirect_to root_path
+              render "errors/fav_only", layout: "error", formats: [:html]
           end
         end
       else
-        redirect_to root_path
+        render "errors/fav_only", layout: "error", formats: [:html]
       end
     end
   end
