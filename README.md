@@ -21,7 +21,7 @@ http://guitar-phrase.com/<br>
 * TwitterAPI(ログイン認証)
 * GoogleAPI(ログイン認証)
 
-<br><br><br>
+<br><br>
 # 機能一覧
 * メールアドレスを用いてのサインイン、ログイン
 * TwitterやGoogleアカウントを用いてのサインイン、ログイン
