@@ -103,6 +103,10 @@ class User < ApplicationRecord
       user.password = "password"
       user.username = "ゲスト"
       user.password_manually_updated = true
+      str = "ギタフレ！をご覧いただきありがとうございます。
+      GitHubにて使用技術等を掲載しておりますので、ご覧頂ければ幸いです。
+      https://github.com/zwgssu/GuitaPhre"
+      user.introduction = str.gsub(/(\\r\\n|\\r|\\n)/, "\n")
     end
   end
 
