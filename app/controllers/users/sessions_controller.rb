@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   def new_guest
     user = User.guest
     sign_in user
-    redirect_to mypage_users_path, notice: "ごゆっくりサイトを散策してください！"
+    redirect_to mypage_users_path, notice: "ログイン完了！ごゆっくりサイトを散策してください！"
   end
 
   # GET /resource/sign_in
