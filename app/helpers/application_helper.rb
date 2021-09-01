@@ -39,7 +39,7 @@ module ApplicationHelper
         if user_signed_in? && current_user == f.user || current_user&.liking_user?(f.user)
           audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"
         else
-          "favユーザー限定フレーズ"
+          content_tag 'u', "Favユーザー限定フレーズ", class: "m-1 border rounded p-2"
         end
       else
         audio_tag url_for(f.music_file), controls: true, controlslist: "nodownload"

@@ -15,8 +15,6 @@ require("jquery")
 
 const images = require.context('../images/', true)
 
-//= require audiojs
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

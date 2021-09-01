@@ -81,8 +81,6 @@ GEM
       zeitwerk (~> 2.3)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
-    audiojs-rails (1.0.1)
-      railties (>= 3.1)
     aws-eventstream (1.1.1)
     aws-partitions (1.483.0)
     aws-sdk-core (3.119.0)
@@ -327,7 +325,6 @@ PLATFORMS
 
 DEPENDENCIES
   activestorage-validator
-  audiojs-rails
   aws-sdk-s3
   bootsnap (>= 1.4.4)
   byebug

@@ -2,6 +2,7 @@
 <% unless user_signed_in? %>
 <div class="border rounded-3 p-3" style="background-color:lightblue;">
   <p>はじめての方へ => <%= link_to "お読みください。", atfirst_path %></p>
+  <p>ゲストユーザーでログイン可能です。 => <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></p>
   <p><%= link_to "会員登録", new_user_registration_path %>してギターフレーズを投稿しませんか？ =>もしくは<%= link_to "ログイン", new_user_session_path %></p>
 </div>
 <% end %>
@@ -12,9 +13,9 @@
   <% @phrases.first(4).each do |phrase| %>
     <div class="col-sm-6 mb-5">
       <div class="text-center">
-      <%= fav_user_only_link?(phrase, phrase.title) %>
+      <%= fav_user_only_link?(phrase, phrase.title) %><%= image_pack_tag "lock-fill.svg" if phrase.user_only? %>
       
-      <p class="text-muted"><%= phrase.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+      <p class="text-muted mb-0"><%= phrase.created_at.strftime("%Y-%m-%d %H:%M") %></p>
       </div>
       <div class="d-flex justify-content-center mb-2">
         <%= fav_user_only?(phrase)%>
@@ -33,7 +34,7 @@
       <div class="text-center">
       <%= link_to theme.title, theme_path(theme), class: "text-dark" %>
       
-      <p class="text-muted"><%= theme.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+      <p class="text-muted mb-0"><%= theme.created_at.strftime("%Y-%m-%d %H:%M") %></p>
       </div>
       <div class="d-flex justify-content-center mb-2">
         <%= audio_tag url_for(theme.music_file), controls: true, controlslist: "nodownload" %>

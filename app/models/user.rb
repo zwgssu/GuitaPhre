@@ -98,6 +98,14 @@ class User < ApplicationRecord
     Phrase.where(user_id: self.liking_user_ids + [self.id])
   end
 
+  def self.guest
+    find_or_create_by(email: "test@com") do |user|
+      user.password = "password"
+      user.username = "ゲスト"
+      user.password_manually_updated = true
+    end
+  end
+
 
 
 end
