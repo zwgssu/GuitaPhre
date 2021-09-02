@@ -7,7 +7,7 @@
       <% if user_signed_in? %>
         <span id="fav_buttons_<%= @user.id %>"><%= render "favorite_users/fav", user: @user %></span>
       <% else %>
-        fav(<%= @user.liking_users.count %>)
+        Fav!(<%= @user.likers.count %>)
       <% end %>
 
     </div>
