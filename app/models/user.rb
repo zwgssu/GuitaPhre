@@ -98,6 +98,7 @@ class User < ApplicationRecord
     Phrase.where(user_id: self.liking_user_ids + [self.id])
   end
 
+  #ゲストログイン機能 sessions_controllerでゲストログイン処理
   def self.guest
     find_or_create_by(email: "test@com") do |user|
       user.password = "password"
